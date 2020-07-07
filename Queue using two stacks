@@ -1,0 +1,36 @@
+
+public class MyQueue {
+	private MyStack first;
+	private MyStack second;
+	int sizefirst;
+	int k;
+	int sizesecond;
+	public MyQueue(int capacity) {
+		first = new MyStack(capacity);
+		second = new MyStack(capacity);
+		sizefirst = 0;
+		sizesecond = 0;
+	}
+	public boolean enqueue(int data) {
+		if(first.push(data)==false)
+			return false;
+		sizefirst++;
+		return true;
+	}
+	public int dequeue() {
+		if(sizesecond==0) {
+			while(sizefirst!=0) {
+				sizefirst--;
+				sizesecond++;
+				k = first.pop();
+				second.push(k);
+				}
+			}
+		sizesecond--;
+		return second.pop();	
+	}
+	public static void main(String[] args) {//test MyQueue
+	
+
+	}
+}
